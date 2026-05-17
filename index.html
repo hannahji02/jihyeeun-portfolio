@@ -1223,6 +1223,176 @@
   </div>
 </section>
 
+<!-- ===== SKILL STACK ===== -->
+<style>
+  .skillstack-wrap {
+    position: relative;
+    background: var(--bg-elev);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 40px 32px 32px;
+  }
+  .skillstack-chart { width: 100%; height: auto; display: block; }
+  .skillstack-legend {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-top: 32px;
+    padding-top: 28px;
+    border-top: 1px solid var(--line);
+  }
+  .skillstack-legend-item {
+    cursor: pointer;
+    padding: 16px;
+    border-radius: 10px;
+    border: 1px solid var(--line);
+    background: color-mix(in srgb, var(--bg-soft) 40%, transparent);
+    transition: all 0.25s ease;
+  }
+  .skillstack-legend-item:hover,
+  .skillstack-legend-item.is-active {
+    background: var(--bg-soft);
+    border-color: var(--accent-soft);
+    transform: translateY(-2px);
+  }
+  .skillstack-legend-swatch {
+    width: 24px; height: 8px; border-radius: 4px;
+    margin-bottom: 10px;
+  }
+  .skillstack-legend-label {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 6px;
+    letter-spacing: -0.01em;
+  }
+  .skillstack-legend-caption {
+    font-size: 12px;
+    color: var(--ink-soft);
+    line-height: 1.55;
+    word-break: keep-all;
+  }
+  .skillstack-axis-label {
+    display: flex; justify-content: space-between;
+    margin-top: 12px;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+  @media (max-width: 768px) {
+    .skillstack-wrap { padding: 28px 20px 24px; }
+    .skillstack-legend { grid-template-columns: 1fr; gap: 10px; }
+    .skillstack-legend-item { padding: 14px; }
+  }
+</style>
+<section class="section" id="skillstack">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-tag">Skill Stack</div>
+      <h2 class="display section-title">필요할 때마다,<br><em>새로운 도구를.</em></h2>
+      <p class="section-desc">입사 후 필요에 따라 자연스럽게 확장된 실무 역량입니다.</p>
+    </div>
+
+    <div class="skillstack-wrap reveal">
+      <svg class="skillstack-chart" viewBox="0 0 900 380" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" aria-label="누적 역량 성장 곡선">
+        <defs>
+          <linearGradient id="ss-grad-1" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="var(--accent)" stop-opacity="0.55"/>
+            <stop offset="100%" stop-color="var(--accent)" stop-opacity="0.28"/>
+          </linearGradient>
+          <linearGradient id="ss-grad-2" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="var(--accent-soft)" stop-opacity="0.50"/>
+            <stop offset="100%" stop-color="var(--accent-soft)" stop-opacity="0.22"/>
+          </linearGradient>
+          <linearGradient id="ss-grad-3" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="var(--gold)" stop-opacity="0.55"/>
+            <stop offset="100%" stop-color="var(--gold)" stop-opacity="0.25"/>
+          </linearGradient>
+          <linearGradient id="ss-grad-4" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="var(--gold)" stop-opacity="0.75"/>
+            <stop offset="100%" stop-color="var(--gold)" stop-opacity="0.40"/>
+          </linearGradient>
+        </defs>
+
+        <!-- baseline -->
+        <line x1="60" y1="320" x2="860" y2="320" stroke="var(--line)" stroke-width="1"/>
+
+        <!-- Layer 1: 문서화 · 커뮤니케이션 (입사 초기부터 베이스) -->
+        <path d="M 60,320 C 180,300 280,280 400,265 C 520,252 640,245 860,240 L 860,320 L 60,320 Z"
+              fill="url(#ss-grad-1)" stroke="var(--accent)" stroke-width="1.2" stroke-opacity="0.6"
+              class="ss-layer" data-layer="1"/>
+
+        <!-- Layer 2: 데이터 가공 · 운영 자동화 (2기부터 등장) -->
+        <path d="M 60,320 C 180,318 240,316 280,310 C 360,290 460,235 560,205 C 680,180 760,170 860,165 L 860,240 C 640,245 520,252 400,265 C 280,280 180,300 60,320 Z"
+              fill="url(#ss-grad-2)" stroke="var(--accent-soft)" stroke-width="1.2" stroke-opacity="0.6"
+              class="ss-layer" data-layer="2"/>
+
+        <!-- Layer 3: 데이터 분석 · 인사이트 (3기부터 등장) -->
+        <path d="M 60,320 C 200,320 320,318 420,310 C 520,290 620,180 720,125 C 780,100 820,90 860,85 L 860,165 C 760,170 680,180 560,205 C 460,235 360,290 280,310 C 240,316 180,318 60,320 Z"
+              fill="url(#ss-grad-3)" stroke="var(--gold)" stroke-width="1.2" stroke-opacity="0.55"
+              class="ss-layer" data-layer="3"/>
+
+        <!-- Layer 4: 자동화 고도화 · 개발 (4기, 가장 최근) -->
+        <path d="M 60,320 C 280,320 460,320 600,315 C 680,300 740,200 800,110 C 825,75 845,55 860,45 L 860,85 C 820,90 780,100 720,125 C 620,180 520,290 420,310 C 320,318 200,320 60,320 Z"
+              fill="url(#ss-grad-4)" stroke="var(--gold)" stroke-width="1.3" stroke-opacity="0.7"
+              class="ss-layer" data-layer="4"/>
+
+        <!-- X-axis markers -->
+        <text x="80" y="345" font-family="'Noto Sans KR'" font-size="11" fill="var(--ink-faint)" letter-spacing="0.04em">입사 초기</text>
+        <text x="450" y="345" font-family="'Noto Sans KR'" font-size="11" fill="var(--ink-faint)" text-anchor="middle" letter-spacing="0.04em">실무 확장기</text>
+        <text x="840" y="345" font-family="'Noto Sans KR'" font-size="11" fill="var(--ink-faint)" text-anchor="end" letter-spacing="0.04em">현재</text>
+
+        <!-- Y-axis hint -->
+        <text x="60" y="60" font-family="'Noto Sans KR'" font-size="10" fill="var(--ink-faint)" letter-spacing="0.05em" font-style="italic">누적 역량</text>
+        <line x1="60" y1="70" x2="60" y2="320" stroke="var(--line)" stroke-width="1" stroke-dasharray="2,4"/>
+      </svg>
+
+      <div class="skillstack-legend">
+        <div class="skillstack-legend-item" data-layer="1">
+          <div class="skillstack-legend-swatch" style="background: var(--accent); opacity: 0.55;"></div>
+          <div class="skillstack-legend-label">문서화 · 커뮤니케이션 · 설문</div>
+          <div class="skillstack-legend-caption">높은 수준의 문서 작성 역량 / 목적에 맞는 발표 자료 및 설문폼 제작</div>
+        </div>
+        <div class="skillstack-legend-item" data-layer="2">
+          <div class="skillstack-legend-swatch" style="background: var(--accent-soft); opacity: 0.65;"></div>
+          <div class="skillstack-legend-label">데이터 가공 · 운영 자동화</div>
+          <div class="skillstack-legend-caption">구글 시트만으로 간이 어드민 수준 구현 / 완성도 높은 PRD 작성 및 개발 미팅 참여</div>
+        </div>
+        <div class="skillstack-legend-item" data-layer="3">
+          <div class="skillstack-legend-swatch" style="background: var(--gold); opacity: 0.6;"></div>
+          <div class="skillstack-legend-label">데이터 분석 · 인사이트</div>
+          <div class="skillstack-legend-caption">스키마 정의 → 빅쿼리 SQL 작성 → 시각화·리포팅·인사이트 도출</div>
+        </div>
+        <div class="skillstack-legend-item" data-layer="4">
+          <div class="skillstack-legend-swatch" style="background: var(--gold); opacity: 0.85;"></div>
+          <div class="skillstack-legend-label">자동화 고도화 · 개발</div>
+          <div class="skillstack-legend-caption">앱스스크립트 고급 활용으로 슬랙봇 세팅 / 바이브코딩 기반 간단 페이지 제작</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Skill stack legend hover/click interaction
+  (function() {
+    const items = document.querySelectorAll('.skillstack-legend-item');
+    const layers = document.querySelectorAll('.ss-layer');
+    items.forEach(item => {
+      item.addEventListener('mouseenter', () => {
+        const target = item.dataset.layer;
+        layers.forEach(l => {
+          l.style.opacity = (l.dataset.layer === target) ? '1' : '0.25';
+        });
+      });
+      item.addEventListener('mouseleave', () => {
+        layers.forEach(l => { l.style.opacity = '1'; });
+      });
+    });
+  })();
+</script>
+
 <!-- ===== 4 PHASES ===== -->
 <section class="section" id="phases" style="background: color-mix(in srgb, var(--bg-soft) 30%, transparent);">
   <div class="container">
@@ -1641,6 +1811,7 @@
     <nav class="footer-nav">
       <a href="#top">맨 위로 ↑</a>
       <a href="#career">Career</a>
+      <a href="#skillstack">Skill Stack</a>
       <a href="#phases">일하는 방식</a>
       <a href="#eval">Evaluation</a>
       <a href="#env">What I'm Looking For</a>
